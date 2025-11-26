@@ -1,0 +1,46 @@
+CC = gcc
+CFLAGS = -Wall -Werror -Wextra -std=c11
+BUILD_DIR = ../build
+
+SOURCES = s21_string.c
+TEST_SOURCE = s21_string_test.c
+STRLEN_TESTS = $(BUILD_DIR)/Quest_1
+STRCMP_TESTS = $(BUILD_DIR)/Quest_2
+STRCPY_TESTS = $(BUILD_DIR)/Quest_3
+STRCAT_TESTS = $(BUILD_DIR)/Quest_4
+STRCHR_TESTS = $(BUILD_DIR)/Quest_5
+STRSTR_TESTS = $(BUILD_DIR)/Quest_6
+
+
+all: $(STRLEN_TESTS) $(STRCMP_TESTS) $(STRCPY_TESTS) $(STRCAT_TESTS) $(STRCHR_TESTS) $(STRSTR_TESTS)
+
+$(STRLEN_TESTS): $(SOURCES) $(TEST_SOURCE)
+	@mkdir -p $(BUILD_DIR)
+	$(CC) $(CFLAGS) -D STRLEN $(SOURCES) $(TEST_SOURCE) -o $@
+
+$(STRCMP_TESTS): $(SOURCES) $(TEST_SOURCE)
+	@mkdir -p $(BUILD_DIR)
+	$(CC) $(CFLAGS) -D STRCMP $(SOURCES) $(TEST_SOURCE) -o $@
+
+$(STRCPY_TESTS): $(SOURCES) $(TEST_SOURCE)
+	@mkdir -p $(BUILD_DIR)
+	$(CC) $(CFLAGS) -D STRCPY $(SOURCES) $(TEST_SOURCE) -o $@
+
+$(STRCAT_TESTS): $(SOURCES) $(TEST_SOURCE)
+	@mkdir -p $(BUILD_DIR)
+	$(CC) $(CFLAGS) -D STRCAT $(SOURCES) $(TEST_SOURCE) -o $@
+
+$(STRCHR_TESTS): $(SOURCES) $(TEST_SOURCE)
+	@mkdir -p $(BUILD_DIR)
+	$(CC) $(CFLAGS) -D STRCHR $(SOURCES) $(TEST_SOURCE) -o $@
+
+$(STRSTR_TESTS): $(SOURCES) $(TEST_SOURCE)
+	@mkdir -p $(BUILD_DIR)
+	$(CC) $(CFLAGS) -D STRSTR $(SOURCES) $(TEST_SOURCE) -o $@
+
+clean:
+	rm -rf $(BUILD_DIR)
+
+rebuild: clean all
+
+.PHONY: all clean rebuild

@@ -1,0 +1,8 @@
+1. cd door_management_files/door_configuration
+2. vim door_1.conf
+3. i (для режима редактирования)
+4. Клавишами вверх/вниз/вправо/влево доходим до места, которое нужно изменить
+5. Меняем CLOSED на OPEN
+6. esc
+7. :wq
+8. Enter
